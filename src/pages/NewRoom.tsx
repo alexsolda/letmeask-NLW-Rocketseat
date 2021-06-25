@@ -23,6 +23,7 @@ export function NewRoom() {
             <main>
                 <div className='main-content'>
                     <img src={logoImg} alt='Logo escrito let me ask com um balão de conversa em volta' />
+                    <h3>{user?.name}</h3>
                     <h2>Criar uma nova sala</h2>
                     <form>
                         <input
