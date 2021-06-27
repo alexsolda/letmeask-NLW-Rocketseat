@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import LogoImg from '../assets/images/logo.svg';
 import deleteImg from '../assets/images/delete.svg';
@@ -17,6 +17,7 @@ type RoomParams = {
 
 export function AdminRoom() {
 
+    const history = useHistory();
     const params = useParams<RoomParams>();
     const roomId = params.id;
     const { title, questions } = useRoom(roomId);
@@ -27,6 +28,14 @@ export function AdminRoom() {
        }
     };
 
+    const handleEndRoom = async () => {
+        await database.ref(`rooms/${roomId}`).update({
+            endedAt: new Date()
+        });
+
+        history.push('/');
+    };
+
     return (
         <div id='page-room'>
             <header>
@@ -34,7 +43,10 @@ export function AdminRoom() {
                     <img src={LogoImg} alt='Logo escrito let me ask com um balão de conversa em volta' />
                     <div>
                         <RoomCode code={roomId} />
-                        <Button isOutlined>Encerrar sala</Button>
+                        <Button 
+                        isOutlined
+                        onClick={handleEndRoom}
+                        >Encerrar sala</Button>
                     </div>
                 </div>
             </header>
