@@ -4,8 +4,10 @@ import '../styles/button.scss';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
-export function Button(props: ButtonProps) {
+export function Button({isOutlined = false, ...props}: ButtonProps & {
+    isOutlined?: boolean;
+}) {
     return (
-        <button className='button' {...props}></button>
+        <button className={`button ${isOutlined ? 'outlined' : ''}`} {...props}></button>
     )
 }
