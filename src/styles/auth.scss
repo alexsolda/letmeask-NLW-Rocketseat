@@ -6,7 +6,7 @@
     aside {
         flex: 6;
 
-        background-color: #835afd;
+        background-color: #5AFD91;
         color: #fff;
 
         display: flex;
@@ -68,6 +68,12 @@
                 padding: 0 16px;
                 background-color: #FFF;
                 border: 1px solid #a8a8e3;
+                outline: 1px solid #5AFD91;
+                transition: all .6s;
+
+                &:focus {
+                    border: 1px solid #1efc68;
+                }
             }
 
             button {
@@ -85,7 +91,7 @@
             margin-top: 16px;
 
             a {
-                color: #e559f9;
+                color: #1efc68;
             }
         }
     }

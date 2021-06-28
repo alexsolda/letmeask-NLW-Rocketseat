@@ -2,7 +2,7 @@
     height: 50px;
     border-radius: 8px;
     font-weight: 500;
-    background-color: #8352fd;
+    background-color: #5AFD91;
     color: #fff;
     padding: 0 32px;
 
@@ -21,13 +21,14 @@
 
     &.outlined {
         background-color: #FFF;
-        border: 1px solid #8352fd;
-        color: #8352fd;
+        border: 1px solid #5AFD91;
+        color: #5AFD91;
     }
 
 
     &:not(disabled):hover {
-        filter: brightness(0.9);
+        background-color: #1efc68;
+        color: #FFF;
     }
 
     &:disabled {

@@ -4,17 +4,25 @@
     overflow: hidden;
 
     background-color: #FFF;
-    border: 1px solid #835afc;
+    border: 1px solid #5AFD91;
     cursor: pointer;
 
     display: flex;
 
+    &:hover {
+        border: 1px solid #1efc68;
+    }
+
     div {
-        background-color: #835afc;
+        background-color: #5AFD91;
         padding: 0 12px;
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &:hover {
+            background-color: #1efc68;
+        }
     }
 
     span {
