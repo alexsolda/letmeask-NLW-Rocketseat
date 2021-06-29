@@ -1,17 +1,17 @@
 import { useParams, useHistory } from 'react-router-dom';
 
-import LogoImg from '../assets/images/logo.png';
-import deleteImg from '../assets/images/delete.svg';
-import checkImg from '../assets/images/check.svg';
-import answerImg from '../assets/images/answer.svg';
+import LogoImg from '../../assets/images/logo.png';
+import deleteImg from '../../assets/images/delete.svg';
+import checkImg from '../../assets/images/check.svg';
+import answerImg from '../../assets/images/answer.svg';
 
-import { Button } from '../components/Button';
-import { Question } from '../components/Question';
-import { RoomCode } from '../components/RoomCode';
-import { useRoom } from '../hooks/useRoom';
+import { Button } from '../../components/Button';
+import { Question } from '../../components/Question';
+import { RoomCode } from '../../components/RoomCode';
+import { useRoom } from '../../hooks/useRoom';
 
-import '../styles/room.scss';
-import { database } from '../services/firebase';
+import {Wrapper} from '../../styles/room';
+import { database } from '../../services/firebase';
 
 type RoomParams = {
     id: string;
@@ -51,7 +51,7 @@ export function AdminRoom() {
     };
 
     return (
-        <div id='page-room'>
+        <Wrapper>
             <header>
                 <div className="content">
                     <img src={LogoImg} alt='Logo escrito let me ask com um balão de conversa em volta' />
@@ -108,6 +108,6 @@ export function AdminRoom() {
                     ))}
                 </div>
             </main>
-        </div>
+        </Wrapper>
     );
 }

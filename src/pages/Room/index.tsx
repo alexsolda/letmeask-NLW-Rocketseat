@@ -1,15 +1,16 @@
 import { FormEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import LogoImg from '../assets/images/logo.png';
-import { Button } from '../components/Button';
-import { Question } from '../components/Question';
-import { RoomCode } from '../components/RoomCode';
-import { useAuth } from '../hooks/useAuth';
-import { useRoom } from '../hooks/useRoom';
-import { database } from '../services/firebase';
+import LogoImg from '../../assets/images/logo.png';
 
-import '../styles/room.scss';
+import { Button } from '../../components/Button';
+import { Question } from '../../components/Question';
+import { RoomCode } from '../../components/RoomCode';
+import { useAuth } from '../../hooks/useAuth';
+import { useRoom } from '../../hooks/useRoom';
+import { database } from '../../services/firebase';
+
+import {Wrapper} from '../../styles/room';
 
 type RoomParams = {
     id: string;
@@ -62,7 +63,7 @@ export function Room() {
     };
 
     return (
-        <div id='page-room'>
+        <Wrapper>
             <header>
                 <div className="content">
                     <img src={LogoImg} alt='Logo escrito let me ask com um balão de conversa em volta' />
@@ -121,6 +122,6 @@ export function Room() {
                     ))}
                 </div>
             </main>
-        </div>
+        </Wrapper>
     );
 }

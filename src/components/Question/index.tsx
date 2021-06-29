@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import '../styles/question.scss';
+
+import { Content } from './styles';
 
 type QuestionProps = {
     content: string;
@@ -20,7 +21,8 @@ export function Question({
     isHighlighted = false
 }: QuestionProps) {
     return (
-        <div className={`question ${isAnswered ? 'answered' :  ''} ${isHighlighted && !isAnswered ? 'highlighted' :  ''}`}>
+
+        <Content isAnswered={isAnswered} isHighlighted={isHighlighted}>
             <p>{content}</p>
             <footer>
                 <div className="user-info">
@@ -31,6 +33,6 @@ export function Question({
                     {children}
                 </div>
             </footer>
-        </div>
+        </Content >
     );
 }

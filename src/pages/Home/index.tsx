@@ -1,14 +1,14 @@
 import { FormEvent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import illustrationImg from '../assets/images/auth-bg.png';
-import logoImg from '../assets/images/logo.png'
-import googleIconImg from '../assets/images/google-icon.svg'
-import '../styles/auth.scss';
+import illustrationImg from '../../assets/images/auth-bg.png';
+import logoImg from '../../assets/images/logo.png'
+import googleIconImg from '../../assets/images/google-icon.svg'
+import { Container } from '../../styles/home';
 
-import { Button } from '../components/Button';
-import { useAuth } from '../hooks/useAuth';
-import { database } from '../services/firebase';
+import { Button } from '../../components/Button';
+import { useAuth } from '../../hooks/useAuth';
+import { database } from '../../services/firebase';
 
 
 export function Home() {
@@ -34,12 +34,12 @@ export function Home() {
 
         const roomRef = database.ref(`rooms/${roomCode}`).get();
 
-        if(!(await roomRef).exists()) {
+        if (!(await roomRef).exists()) {
             alert('erro');
             return;
         }
 
-        if((await roomRef).val().endedAt) {
+        if ((await roomRef).val().endedAt) {
             alert('Room already closed!');
             return;
         }
@@ -48,7 +48,7 @@ export function Home() {
     };
 
     return (
-        <div id='page-auth'>
+        <Container>
             <aside>
                 <img src={illustrationImg} alt='Ilustração simbolizando troca de perguntas e respostas' />
                 <strong>Crie salas de Q&amp; ao vivo</strong>
@@ -75,6 +75,6 @@ export function Home() {
                     </form>
                 </div>
             </main>
-        </div>
+        </Container>
     )
 }

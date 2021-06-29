@@ -1,4 +1,6 @@
-#page-room {
+import styled from 'styled-components';
+
+export const Wrapper = styled.div`
     header {
         padding: 24px;
         border-bottom: 1px solid #1efc68;
@@ -116,4 +118,4 @@
             margin-top: 32px;
         }
     }
-}
+`

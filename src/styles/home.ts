@@ -1,4 +1,6 @@
-#page-auth {
+import styled from 'styled-components';
+
+export const Container = styled.div`
     display: flex;
     align-items: stretch;
     height: 100vh;
@@ -144,5 +146,4 @@
             background-color: #a8a8e3;
             margin-left: 16px;
         }
-    }
-}
+    }`
