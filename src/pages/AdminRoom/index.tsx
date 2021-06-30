@@ -8,9 +8,11 @@ import answerImg from '../../assets/images/answer.svg';
 import { Button } from '../../components/Button';
 import { Question } from '../../components/Question';
 import { RoomCode } from '../../components/RoomCode';
+import { ThemeSwitcher } from '../../components/ThemeSwitcher';
+
 import { useRoom } from '../../hooks/useRoom';
 
-import {Wrapper} from '../../styles/room';
+import { Wrapper } from '../../styles/room';
 import { database } from '../../services/firebase';
 
 type RoomParams = {
@@ -61,6 +63,7 @@ export function AdminRoom() {
                             isOutlined
                             onClick={handleEndRoom}
                         >Encerrar sala</Button>
+                        <ThemeSwitcher />
                     </div>
                 </div>
             </header>

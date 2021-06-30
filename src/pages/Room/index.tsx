@@ -6,11 +6,13 @@ import LogoImg from '../../assets/images/logo.png';
 import { Button } from '../../components/Button';
 import { Question } from '../../components/Question';
 import { RoomCode } from '../../components/RoomCode';
+import { ThemeSwitcher } from '../../components/ThemeSwitcher';
+
 import { useAuth } from '../../hooks/useAuth';
 import { useRoom } from '../../hooks/useRoom';
 import { database } from '../../services/firebase';
 
-import {Wrapper} from '../../styles/room';
+import { Wrapper } from '../../styles/room';
 
 type RoomParams = {
     id: string;
@@ -67,7 +69,10 @@ export function Room() {
             <header>
                 <div className="content">
                     <img src={LogoImg} alt='Logo escrito let me ask com um balão de conversa em volta' />
-                    <RoomCode code={roomId} />
+                    <div>
+                        <RoomCode code={roomId} />
+                        <ThemeSwitcher />
+                    </div>
                 </div>
             </header>
 
