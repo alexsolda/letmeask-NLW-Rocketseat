@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
-export const CodeButton  = styled.button`
+export const CodeButton = styled.button`
     height: 40px;
     border-radius: 8px;
     overflow: hidden;
 
-    background-color: #FFF;
+    background-color: ${props => props.theme.secondary};
+    color: ${props => props.theme.colorSecondary};
     border: 1px solid #5AFD91;
     cursor: pointer;
 
@@ -13,6 +14,10 @@ export const CodeButton  = styled.button`
 
     &:hover {
         border: 1px solid #1efc68;
+
+        > div {   
+        background-color: #1efc68;
+        }
     }
 
     div {
@@ -21,10 +26,6 @@ export const CodeButton  = styled.button`
         display: flex;
         justify-content: center;
         align-items: center;
-
-        &:hover {
-            background-color: #1efc68;
-        }
     }
 
     span {

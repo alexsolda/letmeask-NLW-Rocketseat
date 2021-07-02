@@ -1,6 +1,7 @@
 import { useParams, useHistory } from 'react-router-dom';
 
-import LogoImg from '../../assets/images/logo.png';
+import logoImgLight from '../../assets/images/logo.png';
+import logoImgDark from '../../assets/images/logo-darkmode.png';
 import deleteImg from '../../assets/images/delete.svg';
 import checkImg from '../../assets/images/check.svg';
 import answerImg from '../../assets/images/answer.svg';
@@ -14,12 +15,16 @@ import { useRoom } from '../../hooks/useRoom';
 
 import { Wrapper } from '../../styles/room';
 import { database } from '../../services/firebase';
+import { useContext } from 'react';
+import { ThemeSwitcherContext } from '../../contexts/ThemeSwitcherContext';
 
 type RoomParams = {
     id: string;
 }
 
 export function AdminRoom() {
+
+    const {theme} = useContext(ThemeSwitcherContext);
 
     const history = useHistory();
     const params = useParams<RoomParams>();
@@ -56,7 +61,7 @@ export function AdminRoom() {
         <Wrapper>
             <header>
                 <div className="content">
-                    <img src={LogoImg} alt='Logo escrito let me ask com um balão de conversa em volta' />
+                    <img src={theme.id === 'dark' ? logoImgDark : logoImgLight} alt='Logo escrito let me ask com um balão de conversa em volta' />
                     <div>
                         <RoomCode code={roomId} />
                         <Button

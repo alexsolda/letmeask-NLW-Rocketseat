@@ -8,7 +8,7 @@ export const ButtonContent = styled.button<ButtonProps>`
     height: 50px;
     border-radius: 8px;
     font-weight: 500;
-    background-color: ${({ isOutlined }) => isOutlined ? '#FFF' : '#1efc68'};
+    background-color: ${({ isOutlined, theme }) => isOutlined ? theme.secondary : '#1efc68'};
     color: ${({ isOutlined }) => isOutlined ? '#1efc68' : '#FFF'};
     padding: 0 32px;
 

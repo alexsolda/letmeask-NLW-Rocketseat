@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -8,8 +8,9 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
-    background-color: #d8fde4;
+    background-color: ${props => props.theme.primary};
     color: #29292e;
+    transition: all .6s;
 }
 
 body, input, button, textarea {

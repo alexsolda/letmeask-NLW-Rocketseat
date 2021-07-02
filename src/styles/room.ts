@@ -41,7 +41,7 @@ export const Wrapper = styled.div`
             h1 {
                 font-family: 'Poppins', sans-serif;
                 font-size: 24px;
-                color: #29292e;
+                color: ${props => props.theme.colorSecondary};
             }
 
             span {
@@ -49,7 +49,7 @@ export const Wrapper = styled.div`
                 background-color: #5AFD91;
                 border-radius: 9999px;
                 padding: 8px 16px;
-                color: #FFF;
+                color: ${props => props.theme.colorPrimary};
                 font-weight: 500;
                 font-size: 14px;
             }
@@ -60,7 +60,8 @@ export const Wrapper = styled.div`
                 width: 100%;
                 padding: 16px;
                 border-radius: 8px;
-                background-color: #fefefe;
+                background-color: ${props => props.theme.secondary};
+                color: ${porps => porps.theme.colorSecondary};
                 box-sizing: 0 2px 12px rgba(0,0,0,.4);
                 resize: vertical;
                 min-height: 130px;
@@ -92,7 +93,7 @@ export const Wrapper = styled.div`
 
                     > span {
                         margin-left: 8px;
-                        color: #29292e;
+                        color: ${props => props.theme.colorSecondary};
                         font-weight: 500;
                         font-size: 14px;
                     }

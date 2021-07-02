@@ -21,7 +21,7 @@ type ContentProps = {
 
 export const Content = styled.div<ContentProps>`
 
-    background-color: ${({isHighlighted, isAnswered}) => !isAnswered && isHighlighted ? '#f4f0ff' : isHighlighted ? '#dbdcdd' : '#fefefe'};
+    background-color: ${({theme, isHighlighted, isAnswered}) => !isAnswered && isHighlighted ? '#f4f0ff' : isHighlighted ? '#dbdcdd' : theme.secondary};
     border-radius: 8px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
     padding: 24px;
@@ -33,7 +33,7 @@ export const Content = styled.div<ContentProps>`
 
 
     p {
-        color: #29292e;
+        color: ${props => props.theme.colorSecondary};
     }
 
     footer {
@@ -55,7 +55,7 @@ export const Content = styled.div<ContentProps>`
 
             > span {
                 margin-left: 8px;
-                color: ${({isHighlighted}) => isHighlighted ? '#29292e' : '#737380'};
+                color: ${({isHighlighted, theme}) => isHighlighted ? theme.colorPrimary : theme.colorSecondary};
                 font-size: 14px;
             }
         }
@@ -73,7 +73,7 @@ export const Content = styled.div<ContentProps>`
             &.like-button {
                 display: flex;
                 align-items: flex-end;
-                color: #737380;
+                color: ${props => props.theme.colorSecondary};
                 gap: 8px;
 
                 transition: 0.6s ease;
