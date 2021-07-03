@@ -17,11 +17,9 @@ type ContentProps = {
     isHighlighted: boolean
 }
 
-// <div className={`question ${isAnswered ? 'answered' :  ''} ${isHighlighted && !isAnswered ? 'highlighted' :  ''}`}>
-
 export const Content = styled.div<ContentProps>`
 
-    background-color: ${({theme, isHighlighted, isAnswered}) => !isAnswered && isHighlighted ? '#f4f0ff' : isHighlighted ? '#dbdcdd' : theme.secondary};
+    background-color: ${({theme, isHighlighted, isAnswered}) => !isAnswered && isHighlighted ? theme.colorSpotlight : isHighlighted ? theme.offColor : theme.secondary};
     border-radius: 8px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
     padding: 24px;

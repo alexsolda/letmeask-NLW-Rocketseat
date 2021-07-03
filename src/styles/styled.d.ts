@@ -7,5 +7,7 @@ declare module 'styled-components' {
         secondary: string;
         colorPrimary: string;
         colorSecondary: string;
+        colorSpotlight: string;
+        offColor: string;
     }
 }

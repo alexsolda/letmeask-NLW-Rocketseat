@@ -7,6 +7,8 @@ type NewTheme = {
     secondary: string
     colorPrimary: string;
     colorSecondary: string;
+    colorSpotlight: string;
+    offColor: string;
 }
 
 type ThemeCtx = {
