@@ -26,8 +26,15 @@ export const Content = styled.div<ContentProps>`
     transition: all .6s;
     border: 1px solid ${({isHighlighted, isAnswered}) => isHighlighted && isAnswered ? 'transparent' : isHighlighted ? '#5AFD91' : 'transparent'};
     margin-bottom: 8px;
+    word-wrap: break-word;
 
     animation: ${animateQuestion} 0.6s normal;
+
+    @media (max-width: 415px) {
+        &:last-child {
+            margin-bottom: 80px;
+        }
+    }
 
 
     p {

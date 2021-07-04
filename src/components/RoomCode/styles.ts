@@ -26,6 +26,7 @@ export const CodeButton = styled.button`
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 100%;
     }
 
     span {

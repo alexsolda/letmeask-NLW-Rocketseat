@@ -23,7 +23,7 @@ type RoomParams = {
 
 export function Room() {
 
-    const {theme} = useContext(ThemeSwitcherContext);
+    const { theme } = useContext(ThemeSwitcherContext);
 
     const { user } = useAuth();
     const params = useParams<RoomParams>();
@@ -76,7 +76,9 @@ export function Room() {
                     <img src={theme.id === 'dark' ? logoImgDark : logoImgLight} alt='Logo escrito let me ask com um balão de conversa em volta' />
                     <div>
                         <RoomCode code={roomId} />
-                        <ThemeSwitcher />
+                        <div className="menu--controller">
+                            <ThemeSwitcher />
+                        </div>
                     </div>
                 </div>
             </header>

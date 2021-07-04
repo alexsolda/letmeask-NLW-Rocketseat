@@ -24,7 +24,7 @@ type RoomParams = {
 
 export function AdminRoom() {
 
-    const {theme} = useContext(ThemeSwitcherContext);
+    const { theme } = useContext(ThemeSwitcherContext);
 
     const history = useHistory();
     const params = useParams<RoomParams>();
@@ -64,11 +64,13 @@ export function AdminRoom() {
                     <img src={theme.id === 'dark' ? logoImgDark : logoImgLight} alt='Logo escrito let me ask com um balão de conversa em volta' />
                     <div>
                         <RoomCode code={roomId} />
-                        <Button
-                            isOutlined
-                            onClick={handleEndRoom}
-                        >Encerrar sala</Button>
-                        <ThemeSwitcher />
+                        <div className="menu--controller">
+                            <Button
+                                isOutlined
+                                onClick={handleEndRoom}
+                            >Encerrar sala</Button>
+                            <ThemeSwitcher />
+                        </div>
                     </div>
                 </div>
             </header>

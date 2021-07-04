@@ -5,6 +5,15 @@ export const Container = styled.div`
     align-items: stretch;
     height: 100vh;
 
+    @media (max-width: 870px) {
+        flex-direction: column;
+    }
+
+    @media (max-width: 414px) {
+       height: auto;
+    }
+   
+
     aside {
         flex: 6;
 
@@ -17,14 +26,45 @@ export const Container = styled.div`
 
         padding: 120px 80px;
 
+        @media (max-width: 870px) {
+            align-items: center;
+            padding: 10px;
+            flex: 3;
+    }
+
         img {
             max-width: 320px;
-        }
+
+            @media (max-width: 870px) {
+                width: 150px;
+                }
+                
+                @media (max-width: 414px) {
+                    width: 100px;
+                }
+
+                @media (max-width: 360px) {
+                    width: 80px;
+                }
+            }
 
         strong {
             font: 400 36px "Poppins", sans-serif;
             line-height: 42px;
             margin-top: 16px;
+
+            @media (max-width: 870px) {
+                font-size: 30px;
+            }
+
+            @media (max-width: 414px) {
+               font-size: 24px;
+                text-align: center;
+            }
+
+            @media (max-width: 360px) {
+                font-size: 22px;
+            }
         }
 
         p{
@@ -32,6 +72,14 @@ export const Container = styled.div`
             line-height: 32px;
             margin-top: 16px;
             color: #f8f8f8;
+
+            @media (max-width: 870px) {
+                font-size: 16px;
+            }
+
+            @media (max-width: 414px) {
+               font-size: 12px;
+            }
         }
     }
 
@@ -55,6 +103,11 @@ export const Container = styled.div`
 
         > img {
             align-self: center;
+
+            @media (max-width: 414px) {
+               width: 200px;
+               margin-top: 20px;
+            }
         } 
 
         h2 {
@@ -115,8 +168,20 @@ export const Container = styled.div`
 
         transition: ease .6s;
 
+        @media (max-width: 414px) {
+            margin-top: 36px;
+        }
+
+        @media (max-width: 360px) {
+            font-size: 14px;
+        }
+
         img {
             margin-right: 8px;
+
+            @media (max-width: 360px) {
+                height: 18px;
+            }
         }
 
         &:hover {

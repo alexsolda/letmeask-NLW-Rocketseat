@@ -21,6 +21,12 @@ export const ButtonContent = styled.button<ButtonProps>`
 
     transition: ease .6s;
 
+    @media (max-width: 414px) {
+        height: 40px;
+        padding: 0 20px;
+        font-size: 14px;
+    }
+
     img {
         margin-right: 8px;
     }
