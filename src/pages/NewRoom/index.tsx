@@ -1,16 +1,20 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useContext } from 'react';
 import {Link, useHistory} from 'react-router-dom';
 
 import illustrationImg from '../../assets/images/auth-bg.png';
-import logoImg from '../../assets/images/logo.png'
+import logoImgLight from '../../assets/images/logo.png'
+import logoImgDark from '../../assets/images/logo-darkmode.png'
 
 import {Button} from '../../components/Button';
 import {Container} from '../../styles/home';
 
 import { database } from '../../services/firebase';
 import { useAuth } from '../../hooks/useAuth';
+import { ThemeSwitcherContext } from '../../contexts/ThemeSwitcherContext';
 
 export function NewRoom() {
+
+    const {theme} = useContext(ThemeSwitcherContext);
 
     const {user} = useAuth();
     const [newRoom, setNewRoom] = useState('');
@@ -43,7 +47,7 @@ export function NewRoom() {
             </aside>
             <main>
                 <div className='main-content'>
-                    <img src={logoImg} alt='Logo escrito let me ask com um balão de conversa em volta' />
+                <img src={theme.id === 'light' ? logoImgLight : logoImgDark} alt='Logo escrito let me ask com um balão de conversa em volta' />
                     <h2>Criar uma nova sala</h2>
                     <form onSubmit={handleCreateRoom}>
                         <input

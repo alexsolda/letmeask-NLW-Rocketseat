@@ -17,7 +17,7 @@ export const Container = styled.div`
     aside {
         flex: 6;
 
-        background-color: #5AFD91;
+        background-color: ${({theme}) => theme.primary};
         color: #fff;
 
         display: flex;
@@ -91,6 +91,8 @@ export const Container = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
+
+        background-color: ${({theme}) => theme.secondary};
     }
 
     .main-content {
@@ -114,6 +116,7 @@ export const Container = styled.div`
             font-size: 24px;
             margin: 64px 0 24px;
             font-family: 'Poppins', sans-serif;
+            color: ${({theme}) => theme.colorSecondary};
         }
 
         form {

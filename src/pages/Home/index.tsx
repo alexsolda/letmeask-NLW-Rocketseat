@@ -1,14 +1,16 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import illustrationImg from '../../assets/images/auth-bg.png';
-import logoImg from '../../assets/images/logo.png'
+import logoImgLight from '../../assets/images/logo.png'
+import logoImgDark from '../../assets/images/logo-darkmode.png'
 import googleIconImg from '../../assets/images/google-icon.svg'
 import { Container } from '../../styles/home';
 
 import { Button } from '../../components/Button';
 import { useAuth } from '../../hooks/useAuth';
 import { database } from '../../services/firebase';
+import { ThemeSwitcherContext } from '../../contexts/ThemeSwitcherContext';
 
 
 export function Home() {
@@ -17,6 +19,8 @@ export function Home() {
     const history = useHistory();
     const { user, signInWithGoogle } = useAuth();
     const [roomCode, setRoomCode] = useState('');
+
+    const {theme} = useContext(ThemeSwitcherContext);
 
     const handleCreateRoom = async () => {
         if (!user) {
@@ -57,7 +61,7 @@ export function Home() {
             </aside>
             <main>
                 <div className='main-content'>
-                    <img src={logoImg} alt='Logo escrito let me ask com um balão de conversa em volta' />
+                    <img src={theme.id === 'light' ? logoImgLight : logoImgDark} alt='Logo escrito let me ask com um balão de conversa em volta' />
                     <button className='create-room' onClick={handleCreateRoom}>
                         <img src={googleIconImg} alt='Logo do google' />
                         Crie sua sala com o Google

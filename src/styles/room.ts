@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
             justify-content: space-between;
             align-items: center;
 
-            @media (max-width: 414px) {
+            @media (max-width: 500px) {
                 flex-direction: column;
             }
 
