@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
 import logoImgLight from '../../assets/images/logo.png';
@@ -11,15 +12,15 @@ import { Question } from '../../components/Question';
 import { RoomCode } from '../../components/RoomCode';
 import { ThemeSwitcher } from '../../components/ThemeSwitcher';
 import { LogOffButton } from '../../components/LogOffButton';
+import { ErrorPage } from '../../components/ErrorPage'
 
 import { useRoom } from '../../hooks/useRoom';
 
 import { Wrapper } from '../../styles/room';
 import { database } from '../../services/firebase';
-import { useContext, useEffect } from 'react';
 import { ThemeSwitcherContext } from '../../contexts/ThemeSwitcherContext';
 import { useAuth } from '../../hooks/useAuth';
-import { useState } from 'react';
+
 
 type RoomParams = {
     id: string;
@@ -68,7 +69,6 @@ export function AdminRoom() {
 
     return (
         <Wrapper>
-            {!isAdmin && <div>Faça login para acessar essa área</div>}
             {isAdmin &&
                 <>
                     <header>
@@ -132,6 +132,8 @@ export function AdminRoom() {
                         </div>
                     </main>
                 </>}
+
+            {!isAdmin && <ErrorPage />}
         </Wrapper>
     );
 }
