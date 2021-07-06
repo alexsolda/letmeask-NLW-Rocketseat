@@ -16,6 +16,7 @@ import { database } from '../../services/firebase';
 import { Wrapper } from '../../styles/room';
 import { useContext } from 'react';
 import { ThemeSwitcherContext } from '../../contexts/ThemeSwitcherContext';
+import { LogOffButton } from '../../components/LogOffButton';
 
 type RoomParams = {
     id: string;
@@ -25,7 +26,7 @@ export function Room() {
 
     const { theme } = useContext(ThemeSwitcherContext);
 
-    const { user } = useAuth();
+    const { user, signInWithGoogle } = useAuth();
     const params = useParams<RoomParams>();
     const [newQuestion, setNewQuestion] = useState('');
     const roomId = params.id;
@@ -69,6 +70,12 @@ export function Room() {
         }
     };
 
+    const handleLogIn = async () => {
+        if (!user) {
+            await signInWithGoogle()
+        }
+    };
+
     return (
         <Wrapper>
             <header>
@@ -77,6 +84,7 @@ export function Room() {
                     <div>
                         <RoomCode code={roomId} />
                         <div className="menu--controller">
+                            {user && <LogOffButton />}
                             <ThemeSwitcher />
                         </div>
                     </div>
@@ -102,7 +110,7 @@ export function Room() {
                                 <span>{user.name}</span>
                             </div>
                             :
-                            <span>Para enviar uma pergunta, <button>faça seu login</button>.</span>
+                            <span>Para enviar uma pergunta, <button onClick={handleLogIn}>faça seu login</button>.</span>
                         }
                         <Button type='submit' disabled={!user}>Enviar pergunta</Button>
                     </div>

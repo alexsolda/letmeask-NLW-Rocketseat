@@ -10,6 +10,7 @@ type User = {
 type AuthContextType = {
     user: User | undefined;
     signInWithGoogle: () => Promise<void>;
+    signOutGoogle: () => Promise<void>;
 }
 
 type AuthContextProviderProps = {
@@ -24,6 +25,9 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
+
+            !user && setUser(undefined)
+
             if (user) {
                 const { displayName, photoURL, uid } = user;
 
@@ -43,6 +47,10 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
             unsubscribe();
         }
     }, []);
+
+    const signOutGoogle = async () => {
+        await auth.signOut();
+    };
 
     const signInWithGoogle = async () => {
         const provider = new firebase.auth.GoogleAuthProvider();
@@ -64,7 +72,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
     };
 
     return (
-        <AuthContext.Provider value={{ user, signInWithGoogle }}>
+        <AuthContext.Provider value={{ user, signInWithGoogle, signOutGoogle }}>
             {children}
         </AuthContext.Provider>
     );

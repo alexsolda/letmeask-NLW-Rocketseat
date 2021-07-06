@@ -10,26 +10,35 @@ import { Button } from '../../components/Button';
 import { Question } from '../../components/Question';
 import { RoomCode } from '../../components/RoomCode';
 import { ThemeSwitcher } from '../../components/ThemeSwitcher';
+import { LogOffButton } from '../../components/LogOffButton';
 
 import { useRoom } from '../../hooks/useRoom';
 
 import { Wrapper } from '../../styles/room';
 import { database } from '../../services/firebase';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { ThemeSwitcherContext } from '../../contexts/ThemeSwitcherContext';
+import { useAuth } from '../../hooks/useAuth';
+import { useState } from 'react';
 
 type RoomParams = {
     id: string;
+    owner: string;
 }
 
 export function AdminRoom() {
 
     const { theme } = useContext(ThemeSwitcherContext);
 
+    const { user } = useAuth();
+
     const history = useHistory();
     const params = useParams<RoomParams>();
     const roomId = params.id;
     const { title, questions } = useRoom(roomId);
+
+    const isAdmin = params.owner === user?.id;
+
 
     const handleDeleteQuestion = async (questionId: string) => {
         if (window.confirm('Tem certeza que deseja excluir essa pergunta?')) {
@@ -59,65 +68,70 @@ export function AdminRoom() {
 
     return (
         <Wrapper>
-            <header>
-                <div className="content">
-                    <img src={theme.id === 'dark' ? logoImgDark : logoImgLight} alt='Logo escrito let me ask com um balão de conversa em volta' />
-                    <div>
-                        <RoomCode code={roomId} />
-                        <div className="menu--controller">
-                            <Button
-                                isOutlined
-                                onClick={handleEndRoom}
-                            >Encerrar sala</Button>
-                            <ThemeSwitcher />
+            {!isAdmin && <div>Faça login para acessar essa área</div>}
+            {isAdmin &&
+                <>
+                    <header>
+                        <div className="content">
+                            <img src={theme.id === 'dark' ? logoImgDark : logoImgLight} alt='Logo escrito let me ask com um balão de conversa em volta' />
+                            <div>
+                                <RoomCode code={roomId} />
+                                <div className="menu--controller">
+                                    <Button
+                                        isOutlined
+                                        onClick={handleEndRoom}
+                                    >Encerrar sala</Button>
+                                    {user && <LogOffButton />}
+                                    <ThemeSwitcher />
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </header>
+                    </header>
 
-            <main>
-                <div className="room-title">
-                    <h1>Sala {title}</h1>
-                    {questions.length > 0 && <span>{questions.length} pergunta{questions.length > 1 && 's'}</span>}
-                </div>
+                    <main>
+                        <div className="room-title">
+                            <h1>Sala {title}</h1>
+                            {questions.length > 0 && <span>{questions.length} pergunta{questions.length > 1 && 's'}</span>}
+                        </div>
 
-                <div className="question-list">
-                    {questions.map(question => (
-                        <Question
-                            key={question.id}
-                            content={question.content}
-                            author={question.author}
-                            isAnswered={question.isAnswered}
-                            isHighlighted={question.isHighlighted}
-                        >
-                            {!question.isAnswered && (
-                                <>
+                        <div className="question-list">
+                            {questions.map(question => (
+                                <Question
+                                    key={question.id}
+                                    content={question.content}
+                                    author={question.author}
+                                    isAnswered={question.isAnswered}
+                                    isHighlighted={question.isHighlighted}
+                                >
+                                    {!question.isAnswered && (
+                                        <>
+                                            <button
+                                                type='button'
+                                                onClick={() => handleCheckQuestionAsAnswered(question.id)}
+                                            >
+                                                <img src={checkImg} alt="Marcar pergunta como respondida" />
+                                            </button>
+
+                                            <button
+                                                type='button'
+                                                onClick={() => handleHighlightedQuestion(question.id)}
+                                            >
+                                                <img src={answerImg} alt="Destacar a pergunta sendo respondida" />
+                                            </button>
+                                        </>
+                                    )}
+
                                     <button
                                         type='button'
-                                        onClick={() => handleCheckQuestionAsAnswered(question.id)}
+                                        onClick={() => handleDeleteQuestion(question.id)}
                                     >
-                                        <img src={checkImg} alt="Marcar pergunta como respondida" />
+                                        <img src={deleteImg} alt="Icone de lixeira" />
                                     </button>
-
-                                    <button
-                                        type='button'
-                                        onClick={() => handleHighlightedQuestion(question.id)}
-                                    >
-                                        <img src={answerImg} alt="Destacar a pergunta sendo respondida" />
-                                    </button>
-                                </>
-                            )}
-
-                            <button
-                                type='button'
-                                onClick={() => handleDeleteQuestion(question.id)}
-                            >
-                                <img src={deleteImg} alt="Icone de lixeira" />
-                            </button>
-                        </Question>
-                    ))}
-                </div>
-            </main>
+                                </Question>
+                            ))}
+                        </div>
+                    </main>
+                </>}
         </Wrapper>
     );
 }

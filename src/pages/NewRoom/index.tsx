@@ -34,7 +34,7 @@ export function NewRoom() {
             authorId: user?.id  
         })
 
-        history.push(`/rooms/${firebaseRoom.key}`);
+        history.push(`/admin/rooms/${firebaseRoom.key}/${user?.id}`);
 
     };
 
@@ -42,7 +42,7 @@ export function NewRoom() {
         <Container>
             <aside>
                 <img src={illustrationImg} alt='Ilustração simbolizando troca de perguntas e respostas' />
-                <strong>Crie salas de Q&amp; ao vivo</strong>
+                <strong>Crie salas de Q&amp;A ao vivo</strong>
                 <p>Tire as dúvidas da sua audiência em tempo real</p>
             </aside>
             <main>
