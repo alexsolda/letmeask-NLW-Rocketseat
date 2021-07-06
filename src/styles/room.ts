@@ -154,6 +154,19 @@ export const Wrapper = styled.div`
 
         .question-list {
             margin-top: 32px;
+
+            .empty--questions {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                margin-top: 40px;
+
+                h3 {
+                    color: ${({theme}) => theme.colorSecondary};
+                    margin-top: 20px;
+                }
+            }
         }
     }
 `

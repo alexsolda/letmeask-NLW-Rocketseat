@@ -6,6 +6,7 @@ import logoImgDark from '../../assets/images/logo-darkmode.png';
 import deleteImg from '../../assets/images/delete.svg';
 import checkImg from '../../assets/images/check.svg';
 import answerImg from '../../assets/images/answer.svg';
+import emptyQuestionsImg from '../../assets/images/empty-questions.svg';
 
 import { Button } from '../../components/Button';
 import { Question } from '../../components/Question';
@@ -95,6 +96,12 @@ export function AdminRoom() {
                         </div>
 
                         <div className="question-list">
+                            {questions.length < 1 &&
+                                <div className='empty--questions'>
+                                    <img src={emptyQuestionsImg} alt='Sem perguntas - Imagem ilustrando mensagens vazias.' />
+                                    <h3>Sem perguntas até o momento!</h3>
+                                </div>}
+
                             {questions.map(question => (
                                 <Question
                                     key={question.id}
